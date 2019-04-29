@@ -53,6 +53,7 @@ export default class CubeNavigationHorizontal extends React.Component {
           this._animatedValue.setValue({ x: 0, y: 0 });
         }
       },
+      onPanResponderTerminationRequest: (e, gestureState) => false,
       onPanResponderRelease: (e, gestureState) => {
         let mod = gestureState.dx > 0 ? 100 : -100;
 
