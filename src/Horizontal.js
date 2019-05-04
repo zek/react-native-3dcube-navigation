@@ -56,9 +56,9 @@ export default class CubeNavigationHorizontal extends React.Component {
       onPanResponderRelease: (e, gestureState) => {
         let mod = 0;
         if(gestureState.dx > 50){
-          mod = width;
+          mod = width / 2;
         }else if(gestureState.dx < -50){
-          mod = -width;
+          mod = -width / 2;
         }
 
         let goTo = this._closest(this._value.x + mod);
