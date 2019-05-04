@@ -33,10 +33,9 @@ export default class CubeNavigationHorizontal extends React.Component {
     });
 
     this._panResponder = PanResponder.create({
-      onMoveShouldSetResponderCapture: () => true,
-      onMoveShouldSetResponderCapture: () => Math.abs(gestureState.dx) > 60,
+      onMoveShouldSetResponderCapture: () => Math.abs(gestureState.dx) > 20,
       onMoveShouldSetPanResponderCapture: (evt, gestureState) =>
-        Math.abs(gestureState.dx) > 60,
+        Math.abs(gestureState.dx) > 20,
       onPanResponderGrant: (e, gestureState) => {
         this._animatedValue.stopAnimation();
         this._animatedValue.setOffset({ x: this._value.x, y: this._value.y });
@@ -55,7 +54,12 @@ export default class CubeNavigationHorizontal extends React.Component {
       },
       onPanResponderTerminationRequest: (e, gestureState) => false,
       onPanResponderRelease: (e, gestureState) => {
-        let mod = gestureState.dx > 0 ? 100 : -100;
+        let mod = 0;
+        if(gestureState.dx > 50){
+          mod = width;
+        }else if(gestureState.dx < -50){
+          mod = -width;
+        }
 
         let goTo = this._closest(this._value.x + mod);
         if (this.lockLast > goTo) return; //remove in the future
