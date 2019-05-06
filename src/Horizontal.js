@@ -215,7 +215,7 @@ export default class CubeNavigationHorizontal extends React.Component {
 
     return (
       <Animated.View
-        style={[{ position: 'absolute' }]}
+        style={[{ flex: 1 }]}
         ref={view => {
           this._scrollView = view;
         }}
@@ -223,7 +223,7 @@ export default class CubeNavigationHorizontal extends React.Component {
       >
         <Animated.View
           style={[
-            { backgroundColor: '#000', position: 'absolute', width, height },
+            { position: 'absolute' },
             expandStyle
           ]}
         >
